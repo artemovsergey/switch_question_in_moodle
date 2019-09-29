@@ -369,7 +369,6 @@ require 'roo'
             "П 163" => ["14.10","2.11"],
             "П 164" => ["4.11","23.11"],
             "И 170" => ["30.09","12.10"],
-            "И 170" => ["14.10","26.10"]
         }
 
         year = '.2019'
@@ -419,6 +418,12 @@ end
 
 
 class NilClass
+    def practik?
+        return false
+    end
+end
+
+class Array
     def practik?
         return false
     end
