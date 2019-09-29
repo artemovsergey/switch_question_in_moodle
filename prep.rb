@@ -1,7 +1,11 @@
 require 'sinatra'
-#require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'roo'
 
+
+   get  '/todo' do
+     erb :todo
+   end
 
     get '/' do
         erb :index
@@ -279,6 +283,9 @@ require 'roo'
         def main(str)
         
             if  GROUPS.include?(str)
+
+                return "practika" if time_practik?(str)
+
                 return create_group_learn(str)
             elsif /^[А-Яа-я]+$/ === str 
     
@@ -347,3 +354,72 @@ require 'roo'
            
        erb :search_result
     end
+
+
+
+
+    def time_practik?(str)
+    
+        days_practik = {
+
+            "П 172" => ["2.09","14.09"],
+            "П 173" => ["16.09","28.10"],
+            "П 174" => ["30.09","12.10"],
+            "П 162" => ["23.09","12.10"],
+            "П 163" => ["14.10","2.11"],
+            "П 164" => ["4.11","23.11"],
+            "И 170" => ["30.09","12.10"],
+            "И 170" => ["14.10","26.10"]
+        }
+
+        year = '.2019'
+        current_time = Time.now.strftime("%y.%m.%d") # y.m.d
+    
+
+        # если у группы вообще есть практика
+        if days_practik.key?(str)
+
+            a = days_practik[str][0]
+            b = days_practik[str][1]
+        
+            # p Date.parse(a + year)
+            # p Date.parse(current_time)
+            # p Date.parse(b + year)
+    
+            if (Date.parse(a + year) <= Date.parse(current_time)) &&
+                (Date.parse(current_time) <= Date.parse(b + year))
+                return true    
+            end
+        end
+    
+        return false
+    
+    end
+    
+
+
+class String
+    def practik?
+
+        
+            for i in GROUPS.keys
+                if self.include?(i) and time_practik?(i)
+                    # p self.include?(i)
+                    # p i
+                    # p time_practik?(i)
+                    # p "__"
+                    return true
+                end
+            end
+
+
+        return false
+    end
+end
+
+
+class NilClass
+    def practik?
+        return false
+    end
+end
