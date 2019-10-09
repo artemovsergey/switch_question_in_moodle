@@ -351,11 +351,31 @@ require 'roo'
         return new_s
     end
 
+
+
            
        erb :search_result
     end
 
+    def date?(date1,date2,group,predmet)
 
+
+        current_time = Time.now.strftime("%y.%m.%d") # y.m.d
+        year = '.2019'
+    
+        if (Date.parse(date1+year) <= Date.parse(current_time)) &&
+            (Date.parse(current_time) <= Date.parse(date2+year))
+            return "#{group} #{predmet}"
+        else
+            return false   
+        end
+    
+    
+    end
+
+    def summa
+     2 + 3
+    end
 
 
     def time_practik?(str)
@@ -428,3 +448,29 @@ class Array
         return false
     end
 end
+
+
+helpers do
+
+    def date?(date1,date2,group,predmet,str)
+
+        if str == "Артемов"
+
+            current_time = Time.now.strftime("%y.%m.%d") # y.m.d
+            year = '.2019'
+        
+            if (Date.parse(date1+year) <= Date.parse(current_time)) &&
+                (Date.parse(current_time) <= Date.parse(date2+year))
+                return "#{group} #{predmet}"
+            else
+                return false   
+            end
+
+        end
+    
+    
+    end
+
+
+  end
+

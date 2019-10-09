@@ -8,7 +8,11 @@
             "П 164" => ["4.11","23.11"],
             "И 171" => ["30.09","12.10"],
     }
+
+  
 %>
+
+
 
 <% if main(params[:search]) == false %>
   
@@ -132,7 +136,7 @@
 
                 <tr>
                   <td></td>
-                  <td <% if x[1][5].practik? then %> class = "danger" <% end %> > <%= x[1][5] %> </td> </td>
+                  <td <% if x[1][5].practik? then %> class = "danger" <% end %> > <%= if date?("25.11","26.12","И 170","СПП",params[:search]) != false then date?("25.11","26.12","И 170","СПП",params[:search])  else x[1][5] end %> </td> </td>
                 </tr>
 
                 
@@ -218,7 +222,7 @@
 
                 <tr>
                   <td></td>
-                  <td <% if x[4][0].practik? then %> class = "danger" <% end %> > <%= x[4][0] %> </td> </td>
+                  <td <% if x[4][0].practik? then %> class = "danger" <% end %> > <%= if date?("11.11","26.12","ИД 162","СПП",params[:search]) != false then date?("11.11","26.12","ИД 162","СПП",params[:search])  else x[4][0] end %> </td> </td>
                 </tr>
 
                  <tr>
@@ -238,7 +242,7 @@
 
                 <tr>
                   <td></td>
-                  <td <% if x[4][4].practik? then %> class = "danger" <% end %> > <%= x[4][4] %> </td> </td>
+                  <td <% if x[4][4].practik? then %> class = "danger" <% end %> > <%= if date?("11.09","28.12","И 171","СПП",params[:search]) != false then date?("11.09","28.12","И 171","СПП",params[:search])  else x[4][4] end %> </td> </td>
                 </tr>
 
                 <tr>
