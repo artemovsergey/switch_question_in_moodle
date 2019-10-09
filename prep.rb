@@ -382,13 +382,14 @@ require 'roo'
     
         days_practik = {
 
-            "П 172" => ["2.09","14.09"],
-            "П 173" => ["16.09","28.10"],
-            "П 174" => ["30.09","12.10"],
-            "П 162" => ["23.09","12.10"],
-            "П 163" => ["14.10","2.11"],
-            "П 164" => ["4.11","23.11"],
-            "И 171" => ["30.09","12.10"],
+            "П 172" => ["2.09-14.09","2.09-14.09"],
+            "П 162" => ["23.09-12.10","25.11-14.12","20.04-16.05"],
+            "П 163" => ["14.10-2.11","25.11-14.12","20.04-16.05"],
+            "П 164" => ["4.11-23.11","25.11-14.12","20.04-16.05"],
+            "И 171" => ["30.09-12.10","18.11-30.11","3.02-4.04","20.04-16.05"],
+            "И 170" => ["04.11-16.11","3.02-4.04","20.04-16.05"],
+            "ИД 162" => ["14.10-26.10","2.11-14.11","3.02-4.04","20.04-16.05"]
+            
         }
 
         year = '.2019'
@@ -398,17 +399,22 @@ require 'roo'
         # если у группы вообще есть практика
         if days_practik.key?(str)
 
-            a = days_practik[str][0]
-            b = days_practik[str][1]
+            for day in days_practik[str]
+
+                a = day.split('-')[0]
+                b = day.split('-')[1]
+            
+                # p Date.parse(a + year)
+                # p Date.parse(current_time)
+                # p Date.parse(b + year)
         
-            # p Date.parse(a + year)
-            # p Date.parse(current_time)
-            # p Date.parse(b + year)
-    
-            if (Date.parse(a + year) <= Date.parse(current_time)) &&
-                (Date.parse(current_time) <= Date.parse(b + year))
-                return true    
+                if (Date.parse(a + year) <= Date.parse(current_time)) &&
+                    (Date.parse(current_time) <= Date.parse(b + year))
+                    return true    
+                end
             end
+
+
         end
     
         return false
