@@ -1,13 +1,25 @@
 
-<div style="font-size: 120%; font-family: monospace;margin-left: 550px;margin-top: 200px"  class="container">
+<div style="font-size: 120%;margin-left: 550px;margin-top: 200px"  class="container">
 
 
-<form action="" method="POST" class = "form-search">
-    <input type="search" name="search" placeholder = "202,П 172,Иванов">
-    <input type="submit" class = "btn btn-success">
-</form>
 
+        <!-- Форма для отправки данных: login, password, link, file -->
 
+        <form action="/" method="POST" enctype="multipart/form-data" >
+
+            <input type="login" name="login" placeholder = "login" required autofocus><br>
+            <input type="password" name="password" placeholder = "password" required autofocus><br>
+            <input type="textarea" name="link" placeholder = "link" required autofocus><br>
+            
+            <input name="file" type="file" required>
+
+            <input type="submit" class = "btn btn-success"><br>
+
+        </form>
+
+    <br>
+    <br>
+    <br>
 
 </div>
 
