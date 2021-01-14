@@ -1,5 +1,5 @@
 require 'sinatra'
-#require 'sinatra/reloader'
+require 'sinatra/reloader'
 require 'selenium-webdriver'
 
 
@@ -11,7 +11,7 @@ require 'selenium-webdriver'
     post '/' do
 
       
-      @login = params[:login]
+      @name = params[:name]
       @password = params[:password]
       @link = params[:link]
       @tempfile_path = params[:file][:tempfile].path
@@ -24,6 +24,7 @@ require 'selenium-webdriver'
 
       begin
 
+         
 
          	# Disable javascript for Firefox
 
@@ -54,7 +55,7 @@ require 'selenium-webdriver'
             end
 
            
-            signin(@login,@password,driver)
+            signin(@name,@password,driver)
             driver.find_element(id: 'loginbtn').click
 
 
@@ -85,8 +86,8 @@ require 'selenium-webdriver'
               # Type action for type question
         
               # Добавление вопроса
-        
-              element = driver.find_element(:xpath,'//input[@type="submit" and @value = "Добавить вопрос..."]')
+              sleep 3
+              element = driver.find_element(:xpath,'//input[@type="submit" and @value="Добавить вопрос..."]')
               element.click
         
               def multichoice(driver,text_question,answers)

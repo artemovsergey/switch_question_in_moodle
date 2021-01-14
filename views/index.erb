@@ -1,29 +1,36 @@
+<br>
+<br>
+<br>
 
-<div style="font-size: 120%;margin-left: 550px;margin-top: 200px"  class="container">
 
 
+<div class = "container">
 
-        <!-- Форма для отправки данных: login, password, link, file -->
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="name" name = "name" class="form-control"  required autofocus placeholder="name">
+        
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name = "password" class="form-control" required autofocus placeholder="password">
+        </div>
 
-        <form action="/" method="POST" enctype="multipart/form-data" >
+        <div class="form-group">
+            <label>Link to edit test</label>
+            <input type="link" name = "link" class="form-control" required autofocus placeholder="example: http://kcdo.stvcc.ru/mod/quiz/edit.php?cmid=18163">
+        </div>
 
-            <input type="login" name="login" placeholder = "login" required autofocus><br>
-            <input type="password" name="password" placeholder = "password" required autofocus><br>
-            <input type="textarea" name="link" placeholder = "link" required autofocus><br>
-            
-            <input name="file" type="file" required>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Example file.txt with UTF-8 coding </label>
+            <input type="file" name = "file" class="form-control-file" required autofocus>
+        </div>
 
-            <input type="submit" class = "btn btn-success"><br>
-
-        </form>
-
-    <br>
-    <br>
-    <br>
-
+        <button id = "idbtn" class="btn btn-primary" type="submit">
+            Loading question
+        </button>
+    </form>
 </div>
 
 
-
-
-        
