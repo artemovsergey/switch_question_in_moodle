@@ -19,7 +19,7 @@
    <a href = "https://github.com/artemovsergey/switch_question_in_moodle/blob/main/test_question.txt"></a>
 4. Включение интерактивного режима
 5. Выбор файла теста из тестовой системы колледжа в кодировке UTF-8 (Cохранить как -> UTF-8). Тип вопросов в тестовой системе колледжа 3 и 1 <br>
-   <a href = "https://github.com/artemovsergey/switch_question_in_moodle/blob/main/test_question.txt"></a>
+   https://github.com/artemovsergey/switch_question_in_moodle/blob/main/test_question.txt
 
 ## Как это работает
 При включении интерактивного режима можно посмотреть алгоритм действий для переноса вопросов
