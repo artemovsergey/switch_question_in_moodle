@@ -15,9 +15,11 @@
 
 1. Логин Moodle
 2. Пароль Moodle
-3. Ссылка на страницу редактирования теста. Например, http://kcdo.stvcc.ru/mod/quiz/edit.php?cmid=18163
+3. Ссылка на страницу редактирования теста. Например, http://kcdo.stvcc.ru/mod/quiz/edit.php?cmid=18163 <br>
+   <a href = "https://github.com/artemovsergey/switch_question_in_moodle/blob/main/test_question.txt"></a>
 4. Включение интерактивного режима
-5. Выбор файла теста из тестовой системы колледжа в кодировке UTF-8 (Cохранить как -> UTF-8). Тип вопросов в тестовой системе колледжа 3 и 1
+5. Выбор файла теста из тестовой системы колледжа в кодировке UTF-8 (Cохранить как -> UTF-8). Тип вопросов в тестовой системе колледжа 3 и 1 <br>
+   <a href = "https://github.com/artemovsergey/switch_question_in_moodle/blob/main/test_question.txt"></a>
 
 ## Как это работает
 При включении интерактивного режима можно посмотреть алгоритм действий для переноса вопросов
