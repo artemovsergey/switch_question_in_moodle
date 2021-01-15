@@ -1,4 +1,4 @@
-# switch_question_in_moodle
+# Веб-сервис для преподавателей ГБПОУ СКС для переноса вопросов из тестовой системы колледжа в систему Moodle
 - Установите ruby <a href = "https://rubyinstaller.org/downloads/">installer</a> <br>
 - Установите фреймворк Sinatra <code> gem install sinatra </code><br> в командной строке
 - Обновите библиотеки <code> bundle install</code> в папке проекта <br> в командной строке
