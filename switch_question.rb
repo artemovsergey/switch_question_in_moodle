@@ -39,16 +39,17 @@ require 'selenium-webdriver'
 
             puts "Отключаем javascript в firefox"
 
+            time = 1
             driver.get("about:config");
-            sleep 1
+            sleep time
             driver.find_element(id: 'warningButton').click
-            sleep 1
+            sleep time
             driver.action.send_keys("javascript.enabled").perform
-            sleep 1
+            sleep time
             driver.action.send_keys(:tab).perform
-            sleep 1
+            sleep time
             driver.action.send_keys(:return).perform
-            sleep 1
+            sleep time
             driver.get("http://kcdo.stvcc.ru")
 
 
@@ -71,12 +72,27 @@ require 'selenium-webdriver'
 
             puts "Переходим на страницу редактировния теста"
             
-            # Cсылка на конкретный тест
-            #link_path = 'http://kcdo.stvcc.ru/mod/quiz/edit.php?cmid=18163'
             
+
+
             link_path = @link
 
             driver.navigate.to link_path
+
+            # Удаление вопросов, если они есть в тексте
+            puts "Удаление вопросов"
+            q = 1
+            while driver.find_element(:xpath,'//span[@class="numberofquestions"]').text != 'Вопросы: 0' do
+               
+                   if element = driver.find_element(:xpath,'//img[@class="smallicon" and @title="Удалить"]')
+                     element.click 
+                     puts "Удален вопрос: #{q}"
+                     q+=1
+                   end
+
+            end
+            puts("Удаление завершено")
+
 
             # Чтение файла теста в кодировке UTF-8
 
@@ -86,19 +102,25 @@ require 'selenium-webdriver'
                content = f.read.split('##')[1..-1]
             f.close
 
+            i = 1
             for question in content
 
-
+               puts "Вопрос #{i}" 
                text_question = question.split(/\n/)[1]
                answers = question.split(/\n/)[3..-1]
               
               # Type action for type question
         
               # Добавление вопроса
-              sleep 3
-              element = driver.find_element(:xpath,'//input[@type="submit" and @value="Добавить вопрос..."]')
+              sleep 1
+              wait = Selenium::WebDriver::Wait.new(:timeout => 3000)
+              #element = wait.until {driver.find_element(:xpath,'//input[@type="submit" and @value="Добавить вопрос..."]')}
+              #element = driver.find_element(:css,'#quizcontentsblock > div.editq > div.quizpage > div > div.pagecontrols > div:nth-child(1) > form > div > input[type=submit]:nth-child(1)')
+              element = wait.until {driver.find_element(:css,'#quizcontentsblock > div.editq > div.quizpage > div > div.pagecontrols > div:nth-child(1) > form > div > input[type=submit]:nth-child(1)')}
               element.click
         
+
+
               def multichoice(driver,text_question,answers)
                  #
                  # Выбираем множественный выбор
@@ -197,8 +219,8 @@ require 'selenium-webdriver'
               multichoice(driver,text_question,answers) if question.split(/\n/)[0].split("::")[1] == "3"
               shortanswer(driver,text_question,answers) if question.split(/\n/)[0].split("::")[1] == "1"
         
-        
-           end
+              i+=1
+            end
 
 	
       ensure
