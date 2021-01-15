@@ -4,22 +4,31 @@ require 'selenium-webdriver'
 
 
     get '/' do
+      
 
-        erb :index
-    end
+      erb :index
+      end
 
     post '/' do
-
       
       @name = params[:name]
       @password = params[:password]
       @link = params[:link]
+      
+
       @tempfile_path = params[:file][:tempfile].path
 
 
       NAME_QUESTION = "Вопрос"
    
-      options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
+      if params[:checkbox]
+         @headless = ''
+      else
+         @headless = '-headless'
+      end
+
+
+      options = Selenium::WebDriver::Firefox::Options.new(args: [@headless]) 
       driver = Selenium::WebDriver.for :firefox, options: options #,profile: profile, 
 
       begin
